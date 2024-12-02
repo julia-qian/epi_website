@@ -16,8 +16,28 @@
         header {
             background: darkslategrey;
             color: #f6f5f1;
-            padding: 1rem 0;
+            padding: 5px;
             text-align: center;
+        }
+        .image-container {
+            width: 200px; 
+            height: 200px; 
+            overflow: hidden; 
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        hr {
+        border: 0;
+        clear:both;
+        display:block;
+        width: 96%;               
+        background-color:rgba(47, 79, 79, 0.185);
+        height: 1px;
         }
 
     </style>
@@ -27,28 +47,53 @@
         <h1>Predicting Missing Virus-Host Links for Avian Hosts using Graph Neural Networks</h1>
         <h2>CSE8803-EPI Final Project</h2>
     </header>
-    <div style="display: flex; align-items: center; flex-direction: column;">
-        <h2>Summary</h2>
-        <p>dfhgjkl</p>
+    <div style="display: flex; align-items: center; flex-direction: column; padding: 50px;">
+        
+        <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
+            <h2>Summary</h2>
+            <p>dfhgjkl</p>
+        </div>
 
-        <h2>Project Links</h2>
-        <a href="https://www.overleaf.com/project/6747767d2f07545845a52c3e">Final Report</a>
-        <a>Poster</a>
-        <a>Software</a>
-        <h2>People</h2>
-        <div style="display: flex; align-items: center; flex-direction: row;">
+        <hr class="custom-line">
+
+
+        <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
+            <h2>Results</h2>
+            <p>dfhgjkl</p>
+        </div>
+        <hr class="custom-line">
+        <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
+            <h2>Project Links</h2>
+            <p>Final Report: <a href="https://www.overleaf.com/project/6747767d2f07545845a52c3e">https://www.overleaf.com/project/6747767d2f07545845a52c3e</a></p>
+            <p>Poster: <a href="https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing">https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing</a></p>
+            <a>Software</a>
+        </div>
+
+        <hr class="custom-line">
+        
+        <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
+            <h2>People</h2>
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: row; gap: 15px;">
             <div style="display: flex; align-items: center; flex-direction: column;">
-                <img src="cat.jpg" width="50%">
-                <div>Julia</div>
+                <div class="image-container">
+                    <img src="cat.jpg">
+                </div>
+                <div>Akshath Shvetang Anna</div>
             </div>
             <div style="display: flex; align-items: center; flex-direction: column;">
-                <img src="cat.jpg"width="50%">
-                <div>Julia</div>
+                <div class="image-container">
+                    <img src="grace.jpg">
+                </div>
+                <div>Grace Driskill</div>
             </div>
             <div style="display: flex; align-items: center; flex-direction: column;">
-                <img src="cat.jpg"width="50%">
-                <div>Julia</div>
+                <div class="image-container">
+                    <img src="julia.jpg">
+                </div>
+                <div>Julia Qian</div>
             </div>
+
         </div>
     </div>
 
