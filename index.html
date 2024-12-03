@@ -87,6 +87,7 @@
             <p>
                 From here, we set up a transductive link prediction task where the edges, along with sampled negative edges, are randomly split into train, validation, and test groups.
                  The model is comprised of a series of GraphSAGE convolutional layers. For each link, the model takes the dot product between the final encodings of the corresponding virus and host nodes.
+                 This output score is the chance the model believes the link should be present or absent. 
             </p>
 
             <p>
