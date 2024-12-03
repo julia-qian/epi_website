@@ -40,6 +40,19 @@
         height: 1px;
         }
 
+        table {
+            /* width: 100%; */
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 6px;
+        }
+        th {
+            background-color:rgba(47, 79, 79, 0.048);
+        }
+
     </style>
 </head>
 <body>
@@ -51,22 +64,163 @@
         
         <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
             <h2>Summary</h2>
-            <p>dfhgjkl</p>
+            <p>
+                Zoonotic disease are infectious illnesses transmitted from animals to humans. Spillover is when a disease isolated to 
+                one species begins infecting another. The range of species a virus can infect (host plasticity)
+                is directly related to its potential to spillover to humans. Thus, predicting a virus’s host range
+                 can grant insight into which disease may become zoonotic, helping forecast potential outbreaks and supporting surveillance efforts.
+            </p>
+
+            <p>
+                Host-virus interactions can be represented through biological networks. Graph Neural Networks can be
+                applied to such graphs to predict missing edges. Our project focuses on predicting previously 
+                unknown relationships between bird hosts and known viruses through the application of GNNs by treating the challenge as an edge-prediction problem. 
+            </p>
+            
+            <p>
+                First, we created three datasets related to avian-virus interactions. One included known bird-virus interactions, one contained traits of avian hosts,
+                    and one contained traits of the avian viruses. We then constructed a bipartite graph where nodes were either host (birds) or viruses.
+                     Since the avian and viral features contained categorigal, binary, and continuous features, these were then encoded using an autoencoder library <a href="https://github.com/AlliedToasters/dfencoder">dfencoder</a>.
+
+            </p>
+
+            <p>
+
+
+            </p>
         </div>
-
-        <hr class="custom-line">
-
 
         <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
             <h2>Results</h2>
-            <p>dfhgjkl</p>
+            <h3>Mammalian-virus interactions</h3>
+            <div style="display: flex; align-items: center; flex-direction: column; gap: 15px;">
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Mammalian-virus dataset host autoencoder loss</h4>
+                    <img src="dac_host_AE_train.jpg">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Mammalian-virus dataset virus autoencoder loss</h4>
+                    <img src="dac_virus_AE_train.jpg">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Mammalian-virus dataset GNN learning curve</h4>
+                    <img src="dac_learning_curve.jpg">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Mammalian-virus dataset ROC</h4>
+                    <img src="dac_rocc.jpg">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Mammalian-virus dataset Precision-Recall Curve</h4>
+                    <img src="dac_prc.jpg">
+                </div>
+            </div>
+        
+            <h3>Avian-virus interactions</h3>
+            <div style="display: flex; align-items: center; flex-direction: column; gap: 15px;">
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Avian-virus dataset host autoencoder loss</h4>
+                    <img src="avian_host_AE_train.png">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Avian-virus dataset virus autoencoder loss</h4>
+                    <img src="avian_virus_AE_train.png">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Avian-virus dataset GNN learning curve</h4>
+                    <img src="avian_learning_curve.png">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Avian-virus dataset ROC</h4>
+                    <img src="avian_rocc.png">
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <h4>Avian-virus dataset Precision-Recall Curve</h4>
+                    <img src="avian_prc.png">
+                </div>
+            </div>
+    
+    
+    <h3>Predicted missing links</h3>
+    <p>The following table contains the top 5 predicted missing links. For each predicted interaction, we analyzed the average distance of the novel host to
+         the known hosts of a virus and the average distance of the novel host to the rest of the avian species. For three of the top five predicted
+          interactions, the novel host was closer to the known hosts than to other species in the dataset.
+          This indicates that these hosts are evolutionarily similar, supporting that these are reasonable new virus-host interactions.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Score</th>
+                <th>Virus Taxid</th>
+                <th>Virus Name</th>
+                <th>Host Taxid</th>
+                <th>Host Name</th>
+                <th>Avg. Distance to known Hosts</th>
+                <th>Avg. Distance to Other Species</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0.9731</td>
+                <td>468380</td>
+                <td>Avipoxvirus isolate PM9</td>
+                <td>176066</td>
+                <td>Myiopsitta monachus</td>
+                <td>159.33</td>
+                <td>156.40</td>
+            </tr>
+            <tr>
+                <td>0.9726</td>
+                <td>911324</td>
+                <td>Fowl adenovirus HR2</td>
+                <td>30387</td>
+                <td>Netta rufina</td>
+                <td>161.44</td>
+                <td>185.58</td>
+            </tr>
+            <tr>
+                <td>0.9724</td>
+                <td>1081806</td>
+                <td>Chicken parvovirus 399/HRV/2010</td>
+                <td>241588</td>
+                <td>Poicephalus gulielmi</td>
+                <td>207.11</td>
+                <td>156.79</td>
+            </tr>
+            <tr>
+                <td>0.9720</td>
+                <td>1294111</td>
+                <td>Avipoxvirus isolate Pennsylvania</td>
+                <td>2811340</td>
+                <td>Diomedea sanfordi</td>
+                <td>169.90</td>
+                <td>171.41</td>
+            </tr>
+            <tr>
+                <td> 0.9719</td>
+                <td>1330070</td>
+                <td>Melegrivirus A</td>
+                <td>116992</td>
+                <td>Gracula religiosa</td>
+                <td>207.11</td>
+                <td>150.39</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Each relationship was also manually investivated by searching for occurences of each virus and their novel host through 
+        academic papers and news articles. For four of the novel host-virus interactions, past academic papers and news articles have linked
+        viruses in the same family as affecting similar bird species. For example, Avipoxvirus has been recorded in Laysan Albatross, which suggests it could 
+        reasonabily also infect Diomedea sanfordi (Northern royal albatross). 
+    </p>
+
         </div>
         <hr class="custom-line">
         <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
             <h2>Project Links</h2>
             <p>Final Report: <a href="https://www.overleaf.com/project/6747767d2f07545845a52c3e">https://www.overleaf.com/project/6747767d2f07545845a52c3e</a></p>
             <p>Poster: <a href="https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing">https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing</a></p>
-            <a>Software</a>
+            <p>Github Repository: <a href="https://github.com/gdriskill/zoonotic-diseases">https://github.com/gdriskill/zoonotic-diseases</a></p>
         </div>
 
         <hr class="custom-line">
@@ -77,7 +231,7 @@
         <div style="display: flex; align-items: center; flex-direction: row; gap: 15px;">
             <div style="display: flex; align-items: center; flex-direction: column;">
                 <div class="image-container">
-                    <img src="cat.jpg">
+                    <img src="akshath.jpg">
                 </div>
                 <div>Akshath Shvetang Anna</div>
             </div>
