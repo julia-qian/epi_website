@@ -79,14 +79,18 @@
             
             <p>
                 First, we created three datasets related to avian-virus interactions. One included known bird-virus interactions, one contained traits of avian hosts,
-                    and one contained traits of the avian viruses. We then constructed a bipartite graph where nodes were either host (birds) or viruses.
-                     Since the avian and viral features contained categorigal, binary, and continuous features, these were then encoded using an autoencoder library <a href="https://github.com/AlliedToasters/dfencoder">dfencoder</a>.
+                    and one contained traits of the avian viruses. We use an autoencoder to generate better representations of the input viral and host traits.  We then create a
+                     heterogenous graph with two classes of nodes, viruses and hosts, whose node features are the encodings from the autoencoder. Edges are created for any interactions noted in the data.
 
             </p>
 
             <p>
+                From here, we set up a transductive link prediction task where the edges, along with sampled negative edges, are randomly split into train, validation, and test groups.
+                 The model is comprised of a series of GraphSAGE convolutional layers. For each link, the model takes the dot product between the final encodings of the corresponding virus and host nodes.
+            </p>
 
-
+            <p>
+                We applied this model to both a pre-existing mammal-virus interactions dataset and our constructed avian-virus dataset.
             </p>
         </div>
 
@@ -214,13 +218,21 @@
         reasonabily also infect Diomedea sanfordi (Northern royal albatross). 
     </p>
 
+    <h2>Conclusion</h2>
+    <p>This method of utilizing GNNs for link predicting shows promise for being applied to virus-host interactions for both mammalian and avian datasets.
+         This problem is important to detect possible areas of disease spillover and inform surveillance efforts. This has applicability to humans, as they are mammals.
+          An opportunity for future improvement is combining the mammalian and avian datasets into one model, allowing for predicting spillover of avian viruses to mammals 
+          and mammalian viruses to birds. This would further allow for predicting avian viruses to humans.</p>
         </div>
+
+    
         <hr class="custom-line">
         <div style="display: flex; justify-content: flex-start; width: 100%; flex-direction: column;"> 
             <h2>Project Links</h2>
             <p>Final Report: Delayed due to Overleaf being down. Will update as soon as possible.</p>
             <p>Poster: <a href="https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing">https://docs.google.com/presentation/d/1qcZ_j0ULtPpBrWIYISo7vO4cVjJDuyY9w5qu5Qu0LaA/edit?usp=sharing</a></p>
             <p>Github Repository: <a href="https://github.com/gdriskill/zoonotic-diseases">https://github.com/gdriskill/zoonotic-diseases</a></p>
+            <p>Source code tar file: <a href="https://github.com/gdriskill/zoonotic-diseases">https://github.com/gdriskill/zoonotic-diseases</a></p>
         </div>
 
         <hr class="custom-line">
